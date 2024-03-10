@@ -10,6 +10,7 @@ interface CustomLinkProps {
 
 export default function CustomLink({ href, lang, ...props }: CustomLinkProps) {
   const isDefaultLang = lang === i18n.defaultLocale
+  console.log('isDefaultLang', isDefaultLang)
   const path = isDefaultLang ? href : `/${lang}${href}`
   return <Link href={path} {...props} />
 }

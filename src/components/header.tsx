@@ -11,6 +11,7 @@ import {
 // Next
 import Image from "next/image";
 import Link from "next/link";
+import CustomLink from "./custom-link";
 
 // Internationlization
 import { Locale } from "../../i18n.config";
@@ -19,22 +20,24 @@ import { getDictionary } from "@/lib/dictionaries";
 // Utils
 import { navLinks } from "@/utils/properties";
 
+type NavigationType = {
+  [key: string]: string;
+};
 
 export default async function Header({ lang }: { lang: Locale }) {
+  console.log('lang da header', lang)
   const { navigation } = await getDictionary(lang)
 
   const mapNavLinks = (navLink: any) => {
     return (
-      <Link
+      <CustomLink
+        lang={lang}
         key={navLink.key}
         href={navLink.url}
-        className="font-medium hover:text-gray-400 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+        
       >
-        {/* Add link content here */}
-        {/* {navigation[key: string]} */}
-        {/* {navLink.key} */}
-        {navigation[navLink.key]}
-      </Link>
+        {(navigation as NavigationType)[navLink.key]}
+      </CustomLink>
     );
   };
 
