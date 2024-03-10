@@ -1,11 +1,16 @@
-import React from "react";
+
+
+// Next
+import Link from "next/link";
 import Image from "next/image";
+
+// Components
 import CustomLink from "./custom-link";
+
+// Utils and locales
 import { Locale } from "../../i18n.config";
 import { navLinks, footerIcons } from "@/utils/properties";
 import { getDictionary } from "@/lib/dictionaries";
-import { GitBranchIcon, Github, GithubIcon, LinkedinIcon } from "lucide-react";
-import Link from "next/link";
 
 type NavigationType = {
   [key: string]: string;
@@ -16,10 +21,12 @@ async function Footer({ lang }: { lang: Locale }) {
 
   const mapFooterLinks = (navLink: any, index: number) => {
     return (
-      <li className="relative inline-block pe-8 before:absolute before:end-3 before:top-1/2 before:-translate-y-1/2 before:text-gray-300 before:content-['/'] last:pe-0 last-of-type:before:hidden dark:before:text-gray-600">
+      <li
+        className="relative inline-block pe-8 before:absolute before:end-3 before:top-1/2 before:-translate-y-1/2 before:text-gray-300 before:content-['/'] last:pe-0 last-of-type:before:hidden dark:before:text-gray-600"
+        key={index}
+      >
         <CustomLink
           lang={lang}
-          key={index}
           href={navLink.url}
           className="text-white hover:text-gray-400"
         >
@@ -43,12 +50,12 @@ async function Footer({ lang }: { lang: Locale }) {
 
   return (
     <footer className="w-full bg-primaryBlue px-4 py-6 text-white sm:px-6 lg:px-8">
-      <div className="grid grid-cols-1 items-center gap-5 md:grid-cols-3 text-center ">
+      <div className="grid grid-cols-1 items-center gap-5 text-center md:grid-cols-3 ">
         <div className="flex flex-col gap-2 text-center md:text-left">
           <CustomLink
             href="/"
             lang={lang}
-            className="flex gap-2 text-xl justify-center md:justify-start font-semibold dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+            className="flex justify-center gap-2 text-xl font-semibold dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600 md:justify-start"
           >
             <Image
               src="images/f1_logo.svg"
