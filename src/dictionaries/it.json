@@ -2,7 +2,9 @@
   "navigation": {
     "home": "Home",
     "standings": "Classifica",
-    "calendar": "Calendario"
+    "calendar": "Calendario",
+    "driverStandings": "Classifica Piloti",
+    "constructorStandings": "Classifica Costruttori"
   },
   "page": {
     "home": {

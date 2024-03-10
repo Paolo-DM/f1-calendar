@@ -2,7 +2,9 @@
   "navigation": {
     "home": "Home",
     "standings": "Standings",
-    "calendar": "Calendar"
+    "calendar": "Calendar",
+    "driverStandings": "Driver Standings",
+    "constructorStandings": "Constructor Standings"
   },
   "page": {
     "home": {

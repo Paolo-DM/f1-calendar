@@ -18,15 +18,17 @@ import { Locale } from "../../i18n.config";
 import { getDictionary } from "@/lib/dictionaries";
 
 // Utils
-import { navLinks } from "@/utils/properties";
+import { navLinks, lateralNavLinks } from "@/utils/properties";
+
+// Icons
+import { MenuIcon } from "lucide-react";
 
 type NavigationType = {
   [key: string]: string;
 };
 
 export default async function Header({ lang }: { lang: Locale }) {
-  console.log('lang da header', lang)
-  const { navigation } = await getDictionary(lang)
+  const { navigation } = await getDictionary(lang);
 
   const mapNavLinks = (navLink: any) => {
     return (
@@ -34,61 +36,51 @@ export default async function Header({ lang }: { lang: Locale }) {
         lang={lang}
         key={navLink.key}
         href={navLink.url}
-        
+        className="flex items-center justify-center gap-2 text-white hover:text-gray-400"
       >
+        {navLink.icon && <navLink.icon size={24} />}
         {(navigation as NavigationType)[navLink.key]}
       </CustomLink>
     );
   };
 
-
   return (
-    <header className="flex flex-wrap items-center sm:justify-start sm:flex-nowrap z-50 w-full h-24 bg-primaryBlue text-sm py-4 text-white">
+    <header className="z-50 flex h-24 w-full flex-wrap items-center bg-primaryBlue py-4 text-sm text-white sm:flex-nowrap sm:justify-start">
       <nav
-        className="w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between"
+        className="mx-auto w-full px-4 sm:flex sm:items-center sm:justify-between"
         aria-label="Global"
       >
         <div className="flex items-center justify-between">
-          <Link href="/"
+          <Link
+            href="/"
             className="inline-flex items-center gap-x-2 text-xl font-semibold dark:text-white"
           >
-            <Image src="/images/f1_logo.svg" alt="F1 Logo" width={128} height={32}/>
+            <Image
+              src="/images/f1_logo.svg"
+              alt="F1 Logo"
+              width={128}
+              height={32}
+            />
             F1Calendar
           </Link>
           <div className="sm:hidden">
-            {/* <button type="button" className="hs-collapse-toggle p-2 inline-flex justify-center items-center gap-x-2 rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-white/10 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" data-hs-collapse="#navbar-image-and-text-2" aria-controls="navbar-image-and-text-2" aria-label="Toggle navigation">
-          <svg className="hs-collapse-open:hidden flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="21" y1="6" y2="6"/><line x1="3" x2="21" y1="12" y2="12"/><line x1="3" x2="21" y1="18" y2="18"/></svg>
-          <svg className="hs-collapse-open:block hidden flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-        </button> */}
             <Sheet>
               <SheetTrigger
-                className="hs-collapse-toggle p-2 inline-flex justify-center items-center gap-x-2 rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-transparent dark:border-gray-700 dark:text-white dark:hover:bg-white/10 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                className="hs-collapse-toggle inline-flex items-center justify-center gap-x-2 p-2 text-gray-800 shadow-sm disabled:pointer-events-none disabled:opacity-50 dark:border-gray-700 dark:bg-transparent dark:text-white dark:hover:bg-white/10 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                 data-hs-collapse="#navbar-image-and-text-2"
                 aria-controls="navbar-image-and-text-2"
               >
-                <svg
-                  className="hs-collapse-open:hidden flex-shrink-0 size-4"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <line x1="3" x2="21" y1="6" y2="6" />
-                  <line x1="3" x2="21" y1="12" y2="12" />
-                  <line x1="3" x2="21" y1="18" y2="18" />
-                </svg>
+                <MenuIcon color="white" size={28} />
               </SheetTrigger>
-              <SheetContent>
+              <SheetContent className="w-1/2 border-none bg-primaryBlue text-white">
                 <SheetHeader>
-                  <SheetTitle>Are you absolutely sure?</SheetTitle>
+                  <SheetTitle className="mb-8 text-white pb-4 border-b-2">
+                    F1Calendar
+                  </SheetTitle>
                   <SheetDescription>
-                    This action cannot be undone. This will permanently delete
-                    your account and remove your data from our servers.
+                    <ol className="flex flex-col items-start gap-8">
+                      {lateralNavLinks.map(mapNavLinks)}
+                    </ol>
                   </SheetDescription>
                 </SheetHeader>
               </SheetContent>
@@ -97,9 +89,9 @@ export default async function Header({ lang }: { lang: Locale }) {
         </div>
         <div
           id="navbar-image-and-text-2"
-          className="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow sm:block"
+          className="hs-collapse hidden grow basis-full overflow-hidden transition-all duration-300 sm:block"
         >
-          <div className="flex flex-col gap-5 mt-5 sm:flex-row sm:items-center sm:justify-end sm:mt-0 sm:ps-5">
+          <div className="mt-5 flex flex-col gap-5 sm:mt-0 sm:flex-row sm:items-center sm:justify-end sm:ps-5">
             {navLinks.map(mapNavLinks)}
             {/* <a
               className="font-medium dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
