@@ -45,9 +45,9 @@ export default async function Header({ lang }: { lang: Locale }) {
   };
 
   return (
-    <header className="z-50 flex h-24 w-full flex-wrap items-center bg-primaryBlue py-4 text-sm text-white sm:flex-nowrap sm:justify-start">
+    <header className="z-50 flex h-24 w-full flex-wrap items-center bg-primaryBlue p-4 text-sm text-white sm:flex-nowrap sm:justify-start">
       <nav
-        className="mx-auto w-full px-4 sm:flex sm:items-center sm:justify-between"
+        className="mx-auto w-full px-4 sm:flex sm:items-center sm:justify-between md:text-xl"
         aria-label="Global"
       >
         <div className="flex items-center justify-between">
@@ -72,13 +72,19 @@ export default async function Header({ lang }: { lang: Locale }) {
               >
                 <MenuIcon color="white" size={28} />
               </SheetTrigger>
-              <SheetContent className="w-1/2 border-none bg-primaryBlue text-white">
+              <SheetContent className="w-2/3 border-none bg-primaryBlue text-white">
                 <SheetHeader>
-                  <SheetTitle className="mb-8 text-white pb-4 border-b-2">
+                  <SheetTitle className="mb-8 flex gap-3 border-b-2 pb-4 text-white">
+                    <Image
+                      src="/images/f1_logo.svg"
+                      alt="F1 Logo"
+                      width={64}
+                      height={16}
+                    />
                     F1Calendar
                   </SheetTitle>
                   <SheetDescription>
-                    <ol className="flex flex-col items-start gap-8">
+                    <ol className="flex flex-col items-start gap-8 text-left">
                       {lateralNavLinks.map(mapNavLinks)}
                     </ol>
                   </SheetDescription>
