@@ -1,5 +1,5 @@
 // Icons
-import { HomeIcon, CalendarIcon, CarIcon, FlagIcon, PersonStandingIcon } from "lucide-react";
+import { HomeIcon, CalendarIcon, CarIcon, FlagIcon, PersonStandingIcon, GithubIcon, LinkedinIcon } from "lucide-react";
 
 const navLinks = [
   {
@@ -42,4 +42,17 @@ const lateralNavLinks = [
   },
 ];
 
-export { navLinks, lateralNavLinks };
+const footerIcons = [
+    {
+        key: "github",
+        url: "https://github.com/Paolo-DM",
+        icon: GithubIcon,
+    },
+    {
+        key: "linkedin",
+        url: "https://www.linkedin.com/in/paolo-di-martino1",
+        icon: LinkedinIcon,
+    },
+]
+
+export { navLinks, lateralNavLinks, footerIcons};

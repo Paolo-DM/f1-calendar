@@ -39,7 +39,7 @@ export function middleware(request: NextRequest) {
 
     return NextResponse.redirect(
       new URL(
-        `/${i18n.defaultLocale}${pathname.startsWith('/') ? '' : '/'}${pathname}`,
+        `/${locale}${pathname.startsWith('/') ? '' : '/'}${pathname}`,
         request.url
       )
     )

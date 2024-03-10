@@ -1,10 +1,11 @@
 {
   "navigation": {
     "home": "Home",
-    "standings": "Classifica",
+    "standings": "Classifiche",
     "calendar": "Calendario",
     "driverStandings": "Classifica Piloti",
-    "constructorStandings": "Classifica Costruttori"
+    "constructorStandings": "Classifica Costruttori",
+    "description": "Scopri il mondo della Formula 1!"
   },
   "page": {
     "home": {

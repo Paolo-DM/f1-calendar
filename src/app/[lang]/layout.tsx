@@ -32,7 +32,7 @@ export default function RootLayout({
       <body className="flex flex-col justify-between font-mono min-h-screen">
         <Header lang={params.lang}/>
         <main>{children}</main>
-        <Footer />
+        <Footer lang={params.lang} />
       </body>
     </html>
   );
