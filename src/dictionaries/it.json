@@ -1,0 +1,17 @@
+{
+  "navigation": {
+    "home": "Home",
+    "standings": "Classifica",
+    "calendar": "Calendario"
+  },
+  "page": {
+    "home": {
+      "title": "Casa",
+      "content": "Benvenuti alla pagina di casa!"
+    },
+    "calendar": {
+      "title": "Calendario",
+      "content": "Benvenuti alla pagina del calendario!"
+    }
+  }
+}

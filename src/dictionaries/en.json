@@ -1,0 +1,17 @@
+{
+  "navigation": {
+    "home": "Home",
+    "standings": "Standings",
+    "calendar": "Calendar"
+  },
+  "page": {
+    "home": {
+      "title": "Home",
+      "content": "Welcome to the home page!"
+    },
+    "calendar": {
+      "title": "Calendar",
+      "content": "Welcome to the calendar page!"
+    }
+  }
+}
